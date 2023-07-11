@@ -5,4 +5,4 @@ This project utilizes Bootstrap framework, jQuery, Google Fonts, and Font Awesom
 
 The purpose of this project is to learn to use server side APIs to access data to create a 5 Day Forecast weather app that will also store the cities you've searched for in previous sessions. 
 
-
+Page background photo sourced from: https://www.pexels.com/photo/beautiful-clouds-cloudy-dramatic-209831/ 
