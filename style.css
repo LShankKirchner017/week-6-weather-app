@@ -58,12 +58,21 @@ input.search-bar {
   width: auto;
 }
 .card{
+  display: flex;
+  flex-direction: column;
   background: rgba(178, 176, 177, 0.5);
   font-weight: bold;
   color: white;
-  padding: 2em;
+  padding: 50px;
   border-radius: 30px;
   width: 100%;
   max-width: 420px;
-  margin: 1em;
+  margin-top: -126px;
+  margin-right: 10px;;
+  align-items: flex-start;
+}
+
+.current-weather-info {
+  display: flex;
+  flex-direction: row-reverse;
 }
