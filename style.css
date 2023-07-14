@@ -19,6 +19,10 @@ h1 {
   color: aliceblue;
 }
 
+h3 {
+  line-height: .5em;
+}
+
 input.search-bar {
   border: none;
   outline: none;
@@ -58,17 +62,18 @@ input.search-bar {
   width: auto;
 }
 .card{
-  display: flex;
+  display:flex;
   flex-direction: column;
+  justify-content: flex-start;
   background: rgba(178, 176, 177, 0.5);
   font-weight: bold;
   color: white;
-  padding: 50px;
+  padding: 5px;
   border-radius: 30px;
   width: 100%;
-  max-width: 420px;
   margin-top: -126px;
-  margin-right: 10px;;
+  margin-right: 10px;
+  margin-left: 10px;
   align-items: flex-start;
 }
 

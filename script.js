@@ -3,13 +3,53 @@
     var apiKey = "6c8c0a6af3c2e6f391e3b079abd7bb2f";
     // search button
     var searchButton = document.querySelector("button")
-    // weather data
-    var weather
     // user input (city location)
     var citySearched = document.getElementById("citySearched")
 
-// I want to create a variable for Weather that holds all of the necessary data & displays it
+    window.addEventListener('load', () => {
+        var long;
+        var lat;
+        var weather =
+          "https://api.openweathermap.org/data/2.5/forecast?lat=43.77&lon=-88.45&appid=6c8c0a6af3c2e6f391e3b079abd7bb2f&units=imperial";
+          console.log(weather)
+          fetch(weather).then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            var city = data.name;
+            var temp = data.main;
+            var description = data.weather[1];
+            var icon = data.icon;
+            var humidity = data.main;
+            var wind = data.wind;
 
+          })
+        // Accessing Geolocation of User 
+        if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition((position) =>{
+            // Storing Longitude and Latitude in variables
+            long = position.coords.longitude;
+            lat = position.coords.latitude;
+        
+            });
+        }
+    });
+    // I want to create a variable for Weather that holds all of the necessary data & displays it
+
+    
+
+
+// document.querySelector(".button").addEventListener("click", function(){
+//     weather.search();
+// })
+
+// document.querySelector(".search-bar").addEventListener("keyup", function(event) {
+//     if(event.key == "Enter"){
+//         weather.search();
+//     }
+// })
+
+// weather.fetchWeather("Fond du Lac")
 // Classes for Current Weather Info
     // city
     // temp
