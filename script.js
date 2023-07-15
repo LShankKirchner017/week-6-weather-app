@@ -6,8 +6,11 @@
   var currentHour = dayjs().format("hh");
   console.log(currentHour)
 
+  // TODO add icon var
+
   // DOM Variables
   var weatherCity = document.querySelector(".weatherCity")
+  var conditions = document.querySelector(".conditions")
   var temp = document.querySelector(".temp")
   var humidity = document.querySelector(".humidity")
   var wind = document.querySelector(".wind")
@@ -44,9 +47,10 @@
     weatherCity.innerText = weatherData.name
     temp.innerText = weatherData.main.temp
     humidity.innerText = weatherData.main.humidity
-    wind.innerText = weatherData.main.wind
+    wind.innerText = weatherData.wind.speed
+    // need to add icon (dynamic)
     console.log(weatherData)
-    
+
  }
 
  // Forecast Function (pure-ish function)
@@ -84,15 +88,8 @@
     generateCityButton(city);
   });
 
-// create elements in the current weather card (use querySelector & append.child)
-  // h2 city
-  // icon
-  // h3 condition
-  // h3 temp
-  // h3 humidity
-  // wind
 
-// create elements in the upcoming weather card (use querySelector & append.child)
+// create elements in the upcoming weather card
   // icon
   // h3 condition
   // h3 temp
