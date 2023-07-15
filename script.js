@@ -45,6 +45,7 @@
   
   function renderWeatherData(weatherData){
     weatherCity.innerText = weatherData.name
+    conditions.innerText = weatherData.weather[0].description
     temp.innerText = weatherData.main.temp
     humidity.innerText = weatherData.main.humidity
     wind.innerText = weatherData.wind.speed
