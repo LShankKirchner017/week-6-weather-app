@@ -61,7 +61,23 @@ input.search-bar {
   border-radius: 30px;
   width: auto;
 }
-.card{
+.card.current-weather-info{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(178, 176, 177, 0.5);
+  font-weight: bold;
+  color: white;
+  padding: 5px;
+  border-radius: 30px;
+  width: 100%;
+  margin-top: -126px;
+  margin-right: 10px;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.card.upcoming-weather-info{
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
