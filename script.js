@@ -19,7 +19,7 @@
   }
 
   function getCurrentWeather (city){
-    console.log(city)
+    console.log("Getting current weather for " + city)
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" 
     + city 
     + "&units=imperial&appid="
@@ -30,9 +30,30 @@
 
     })
     .then(function(data){
+      // TODO: update current weather DOM
       console.log(data)
+      get5DayForecast (data.coord)
     });
  }
+
+ // Forecast Function
+  function get5DayForecast(coords) {
+    console.log("Getting five day forecast for " , coords);
+  
+    fetch(
+      "https://api.openweathermap.org/data/2.5/forecast?lat="+ coords.lat+
+      "&lon=" + coords.lon + 
+        "&units=imperial&appid=" +
+        apiKey
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        // TODO: update current weather DOM
+        console.log(data);
+      });
+  }
   // var userLat = position.coords.latitude;
   // var userLon = position.coords.longitude;
 
