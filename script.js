@@ -8,14 +8,11 @@
 
   // DOM Variables
   var weatherCity = document.querySelector(".weatherCity")
-  var icon = document.querySelector(".icon")
-  var description = document.querySelector(".description")
   var temp = document.querySelector(".temp")
   var humidity = document.querySelector(".humidity")
   var wind = document.querySelector(".wind")
-  console.log(weatherCity, icon, description, temp, humidity, wind)
-
-  
+ 
+// generate a button for previously searched cities
   function generateCityButton(city) {
     var button = document.createElement("button");
     button.innerText = city;
@@ -45,9 +42,11 @@
   
   function renderWeatherData(weatherData){
     weatherCity.innerText = weatherData.name
-    icon.innerHTML = weather
-    temp.innerText= weatherData.main.temp
+    temp.innerText = weatherData.main.temp
+    humidity.innerText = weatherData.main.humidity
+    wind.innerText = weatherData.main.wind
     console.log(weatherData)
+    
  }
 
  // Forecast Function (pure-ish function)
