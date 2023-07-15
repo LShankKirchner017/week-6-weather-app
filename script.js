@@ -1,21 +1,58 @@
 // variables
   var apiKey= "6c8c0a6af3c2e6f391e3b079abd7bb2f"
-  var API= "https://api.openweathermap.org/data/2.5/forecast?lat=43.77&lon=-88.45&appid=6c8c0a6af3c2e6f391e3b079abd7bb2f"
+  // var API= "https://api.openweathermap.org/data/2.5/forecast?lat=43.77&lon=-88.45&appid=6c8c0a6af3c2e6f391e3b079abd7bb2f"
+
+  var searchBar = document.querySelector(".search-bar");
+  var searchButton = document.getElementById("search-btn");
+  var citySearched = document.getElementById("citySearched");
+
+  searchButton.addEventListener("click", function(event){
+    event.preventDefault ()
+    var city = searchBar.value.trim();
+    getCurrentWeather(city)
+    generateCityButton(city)
+  })
+  function generateCityButton (city){
+    var button = document.createElement("button");
+    button.innerText = city;
+    citySearched.appendChild(button)
+  }
+
+  function getCurrentWeather (city){
+    console.log(city)
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" 
+    + city 
+    + "&units=imperial&appid="
+    + apiKey
+    )
+    .then(function(response) {
+       return response.json()
+
+    })
+    .then(function(data){
+      console.log(data)
+    });
+ }
+  // var userLat = position.coords.latitude;
+  // var userLon = position.coords.longitude;
 
   // var citySearched = .search-bar
 
 // create a event listener for the button 
   // & search bar
 
-// create a function to fetch the weather
-fetch("https://api.openweathermap.org/data/2.5/forecast?lat=43.77&lon=-88.45&appid=6c8c0a6af3c2e6f391e3b079abd7bb2f")
-  .then (function(response){
-    return response.json();
-  })
-  .then (function(data){
-    var weather = data;
-    console.log(weather)
-  });
+
+// create a function to fetch the current weather
+
+// create a function to fetch the weather forecast
+// fetch("https://api.openweathermap.org/data/2.5/forecast?lat=43.77&lon=-88.45&appid=6c8c0a6af3c2e6f391e3b079abd7bb2f")
+//   .then (function(response){
+//     return response.json();
+//   })
+//   .then (function(data){
+//     var weather = data;
+//     console.log(weather)
+//   });
 //create a function to display the weather
 
 // create elements in the current weather card (use querySelector & append.child)
