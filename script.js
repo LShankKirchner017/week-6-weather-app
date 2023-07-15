@@ -1,10 +1,10 @@
 // variables
   var apiKey= "6c8c0a6af3c2e6f391e3b079abd7bb2f"
-  // var API= "https://api.openweathermap.org/data/2.5/forecast?lat=43.77&lon=-88.45&appid=6c8c0a6af3c2e6f391e3b079abd7bb2f"
-
   var searchBar = document.querySelector(".search-bar");
   var searchButton = document.getElementById("search-btn");
   var citySearched = document.getElementById("citySearched");
+  var currentHour = dayjs().format("hh");
+  console.log(currentHour)
 
   searchButton.addEventListener("click", function(event){
     event.preventDefault ()
@@ -17,7 +17,7 @@
     button.innerText = city;
     citySearched.appendChild(button)
   }
-
+// current weather function (pure-ish function)
   function getCurrentWeather (city){
     console.log("Getting current weather for " + city)
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" 
@@ -36,7 +36,7 @@
     });
  }
 
- // Forecast Function
+ // Forecast Function (pure-ish function)
   function get5DayForecast(coords) {
     console.log("Getting five day forecast for " , coords);
   
@@ -52,10 +52,18 @@
       .then(function (data) {
         // TODO: update current weather DOM
         console.log(data);
+        for (var i  =0; i < data.list.length; i++){
+          var weatherData = data.list[i]
+          var weatherHour = weatherData.dt_txt.split(" ")[1].split(":")[0];
+          if (currentHour == weatherHour){
+            generateForecastCard (weatherData)
+          }
+        }
       });
   }
-  // var userLat = position.coords.latitude;
-  // var userLon = position.coords.longitude;
+  function generateForecastCard(weatherData){
+    console.log(weatherData)
+  }
 
   // var citySearched = .search-bar
 
