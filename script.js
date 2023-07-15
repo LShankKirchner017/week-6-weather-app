@@ -6,17 +6,24 @@
   var currentHour = dayjs().format("hh");
   console.log(currentHour)
 
-  searchButton.addEventListener("click", function(event){
-    event.preventDefault ()
-    var city = searchBar.value.trim();
-    getCurrentWeather(city)
-    generateCityButton(city)
-  })
-  function generateCityButton (city){
+  // DOM Variables
+  var weatherCity = document.querySelector(".weatherCity")
+  var icon = document.querySelector(".icon")
+  var description = document.querySelector(".description")
+  var temp = document.querySelector(".temp")
+  var humidity = document.querySelector(".humidity")
+  var wind = document.querySelector(".wind")
+  console.log(weatherCity, icon, description, temp, humidity, wind)
+
+  
+  function generateCityButton(city) {
     var button = document.createElement("button");
     button.innerText = city;
-    citySearched.appendChild(button)
+    citySearched.appendChild(button);
   }
+
+// Local Storage
+
 // current weather function (pure-ish function)
   function getCurrentWeather (city){
     console.log("Getting current weather for " + city)
@@ -31,15 +38,21 @@
     })
     .then(function(data){
       // TODO: update current weather DOM
-      console.log(data)
       get5DayForecast (data.coord)
+      renderWeatherData (data)
     });
+  }
+  
+  function renderWeatherData(weatherData){
+    weatherCity.innerText = weatherData.name
+    icon.innerHTML = weather
+    temp.innerText= weatherData.main.temp
+    console.log(weatherData)
  }
 
  // Forecast Function (pure-ish function)
   function get5DayForecast(coords) {
     console.log("Getting five day forecast for " , coords);
-  
     fetch(
       "https://api.openweathermap.org/data/2.5/forecast?lat="+ coords.lat+
       "&lon=" + coords.lon + 
@@ -50,7 +63,7 @@
         return response.json();
       })
       .then(function (data) {
-        // TODO: update current weather DOM
+        // TODO: update forecast weather DOM
         console.log(data);
         for (var i  =0; i < data.list.length; i++){
           var weatherData = data.list[i]
@@ -65,24 +78,12 @@
     console.log(weatherData)
   }
 
-  // var citySearched = .search-bar
-
-// create a event listener for the button 
-  // & search bar
-
-
-// create a function to fetch the current weather
-
-// create a function to fetch the weather forecast
-// fetch("https://api.openweathermap.org/data/2.5/forecast?lat=43.77&lon=-88.45&appid=6c8c0a6af3c2e6f391e3b079abd7bb2f")
-//   .then (function(response){
-//     return response.json();
-//   })
-//   .then (function(data){
-//     var weather = data;
-//     console.log(weather)
-//   });
-//create a function to display the weather
+  searchButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    var city = searchBar.value.trim();
+    getCurrentWeather(city);
+    generateCityButton(city);
+  });
 
 // create elements in the current weather card (use querySelector & append.child)
   // h2 city
