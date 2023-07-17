@@ -116,11 +116,11 @@
       var humidity = forecastEL.children[3];
       var wind = forecastEL.children[4];
 
-      description.innerText = weatherData[i].weather[0].description;
+      description.innerText = "Forecast: " + weatherData[i].weather[0].description;
       icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
-       temp.innerText = weatherData[i].main.temp;
-       humidity.innerText = weatherData[i].main.humidity;
-       wind.innerText = weatherData[i].wind.speed;
+       temp.innerText = "Temp: " + weatherData[i].main.temp; +"°F";
+       humidity.innerText = "Humidity: " + weatherData[i].main.humidity + "%";
+       wind.innerText = "Wind: " + weatherData[i].wind.speed + "MPH";
     }
   }
 
