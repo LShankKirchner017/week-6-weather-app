@@ -63,7 +63,7 @@
     temp.innerText = weatherData.main.temp
     humidity.innerText = weatherData.main.humidity
     wind.innerText = weatherData.wind.speed
-    // need to add icon (dynamic)
+
     console.log(weatherData)
 
  }
