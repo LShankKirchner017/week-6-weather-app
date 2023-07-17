@@ -3,7 +3,8 @@
   var searchBar = document.querySelector(".search-bar");
   var searchButton = document.getElementById("search-btn");
   var citySearched = document.getElementById("citySearched");
-  var currentHour = "11" //dayjs().format("hh");
+  var currentHour = dayjs().format("hh");
+  var knownHours = [0, 3, 6, 9, 12, 15, 18, 21];
   console.log(currentHour)
   
   // DOM Variables
@@ -23,10 +24,9 @@
   
   // TODO Local Storage & search history
   
-  var knownHours = [0, 3, 6, 9, 12, 15, 18, 21];
+  
 // Get Next Hour Available
   function getNextAvailableHour(hour) {
-    console.log("Working on hour" + hour);
     var hourNum = parseInt(hour);
     if (knownHours.includes(hourNum)) {
       return hour;
@@ -34,7 +34,6 @@
       var nextHour;
       for (var i = 0; i < knownHours.length; i++) {
         var knownHourNum = parseInt(knownHours[i]);
-        //   console.log(knownHourNum, hourNum, knownHourNum - hourNum);
         if (Math.abs(knownHourNum - hourNum) === 1) {
           nextHour = knownHours[i];
           break;
@@ -107,7 +106,7 @@
       });
   }
   function generateForecastCards(weatherData){
-    console.log(weatherData)
+  
     for (var i = 0; i < weatherData.length; i++){
       var forecastEL = document.getElementById("forecast-" + [i])
       var icon = forecastEL.children[0];
@@ -115,7 +114,7 @@
       var temp = forecastEL.children[2];
       var humidity = forecastEL.children[3];
       var wind = forecastEL.children[4];
-       console.log(forecastEl, icon, description, temp, humidity, wind)
+       console.log(forecastEL, icon, description, temp, humidity, wind)
       description.innerText = weatherData[i].weather[0].description;
       icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
        temp.innerText = weatherData[i].main.temp;
