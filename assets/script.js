@@ -106,9 +106,9 @@
 
       description.innerText = "Forecast: " + weatherData[i].weather[0].description;
       icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
-       temp.innerText = "Temp: " + weatherData[i].main.temp; +"°F";
+       temp.innerText = "Temp: " + weatherData[i].main.temp; + "°F";
        humidity.innerText = "Humidity: " + weatherData[i].main.humidity + "%";
-       wind.innerText = "Wind: " + weatherData[i].wind.speed + "MPH";
+       wind.innerText = "Wind: " + weatherData[i].wind.speed +  " MPH";
     }
   }
   
