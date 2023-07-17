@@ -2,10 +2,9 @@
   var apiKey= "6c8c0a6af3c2e6f391e3b079abd7bb2f"
   var searchBar = document.querySelector(".search-bar");
   var searchButton = document.getElementById("search-btn");
-  var citySearched = document.getElementById("citySearched");
+  var searchHistory = document.getElementById("searchHistory");
   var currentHour = dayjs().format("hh");
   var knownHours = [0, 3, 6, 9, 12, 15, 18, 21];
-  console.log(currentHour)
   
   // DOM Variables
   var weatherCity = document.querySelector(".weatherCity")
@@ -14,17 +13,7 @@
   var temp = document.querySelector(".current-temp")
   var humidity = document.querySelector(".current-humidity")
   var wind = document.querySelector(".current-wind")
-  
-  // generate a button for previously searched cities
-  function generateCityButton(city) {
-    var button = document.createElement("button");
-    button.innerText = city;
-    citySearched.appendChild(button);
-  }
-  
-  // TODO Local Storage & search history
-  
-  
+
 // Get Next Hour Available
   function getNextAvailableHour(hour) {
     var hourNum = parseInt(hour);
@@ -91,14 +80,13 @@
         return response.json();
       })
       .then(function (data) {
-        // TODO: update forecast weather DOM
+ 
         var forecastResults = [];
   
         for (var i  =0; i < data.list.length; i++){
           var weatherData = data.list[i]
           var weatherHour = weatherData.dt_txt.split(" ")[1].split(":")[0];
           var nextHour = getNextAvailableHour(currentHour)
-          console.log(currentHour, weatherHour)
           if (nextHour == weatherHour){
              forecastResults.push(weatherData)
           } 
@@ -123,10 +111,24 @@
        wind.innerText = "Wind: " + weatherData[i].wind.speed + "MPH";
     }
   }
+  
+  // generate a list of previously searched cities
+  
+  function generateCityList(city) {
+    var para = document.createElement("p");
+    para.innerText = city;
+    searchHistory.appendChild(para);
+  }
+
+// Local Storage   
+  // when the user puts a value in the input and clicks the search-btn
+    // then the city is stored in search history
+
 
   searchButton.addEventListener("click", function (event) {
     event.preventDefault();
     var city = searchBar.value.trim();
+   
     getCurrentWeather(city);
-    generateCityButton(city);
+    generateCityList(city);
   });
