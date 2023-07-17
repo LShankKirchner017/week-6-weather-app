@@ -2,7 +2,8 @@
   var apiKey= "6c8c0a6af3c2e6f391e3b079abd7bb2f"
   var searchBar = document.querySelector(".search-bar");
   var searchButton = document.getElementById("search-btn");
-  var searchHistory = document.getElementById("searchHistory");
+  var cityName = document.getElementById("cityName")
+  var citySearched = document.getElementById("citySearched")
   var currentHour = dayjs().format("hh");
   var knownHours = [0, 3, 6, 9, 12, 15, 18, 21];
   
@@ -106,7 +107,7 @@
 
       description.innerText = "Forecast: " + weatherData[i].weather[0].description;
       icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
-       temp.innerText = "Temp: " + weatherData[i].main.temp; + "°F";
+       temp.innerText = "Temp: " + weatherData[i].main.temp + "°F";
        humidity.innerText = "Humidity: " + weatherData[i].main.humidity + "%";
        wind.innerText = "Wind: " + weatherData[i].wind.speed +  " MPH";
     }
@@ -116,12 +117,17 @@
 
 // Local Storage   
   // when the user puts a value in the input and clicks the search-btn
-    // then the city is stored in search history
 
+    // search generates city button
+  function generateCityButton(city) {
+    var button = document.createElement("button");
+    button.innerText = city;
+    citySearched.appendChild(button);
+  }
 
   searchButton.addEventListener("click", function (event) {
     event.preventDefault();
     var city = searchBar.value.trim();
-   
+    generateCityButton(city)
     getCurrentWeather(city);
   });

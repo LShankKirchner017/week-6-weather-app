@@ -17,13 +17,15 @@
             <h1> 🌤️ Your Weather Dashboard 🌧️ </h1>
         </section>
     </header>
-    <!-- where the user can search for the city & it stores the cities they've already searched -->
+    <!--user can search for the city -->
     <section class="search">
         <form class="search">
-            <input type="text" class="search-bar" placeholder="Search">
+            <input type="text" class="search-bar" id="cityName" placeholder="Search">
             <br>
             <button class="button" id="search-btn">Search</button>
-            <p id="citySearched"></p>
+            <!-- Search History  -->
+            <div id="citySearched"></div>
+                <h2>Search History</h2>
         </form>
     </section>
     <br>
