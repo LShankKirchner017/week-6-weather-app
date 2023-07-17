@@ -6,8 +6,6 @@
   var currentHour = dayjs().format("hh");
   console.log(currentHour)
 
-  // TODO add icon var
-
   // DOM Variables
   var weatherCity = document.querySelector(".weatherCity")
   var icon = document.querySelector(".current-icon")
@@ -23,7 +21,7 @@
     citySearched.appendChild(button);
   }
 
-// Local Storage & search history
+// TODO Local Storage & search history
 
 // current weather function (pure-ish function)
   function getCurrentWeather (city){
@@ -38,8 +36,6 @@
 
     })
     .then(function(data){
-
-      // TODO: update current weather DOM
 
       get5DayForecast (data.coord)
       renderWeatherData (data)
