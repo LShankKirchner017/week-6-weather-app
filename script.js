@@ -102,9 +102,8 @@
        temp.innerText = weatherData[i].main.temp;
        humidity.innerText = weatherData[i].main.humidity;
        wind.innerText = weatherData[i].wind.speed;
-      
     }
-    console.log(weatherData[0].weather)
+    console.log(weatherData[0].weather);
   }
 
   searchButton.addEventListener("click", function (event) {
