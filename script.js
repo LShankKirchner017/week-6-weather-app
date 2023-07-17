@@ -61,7 +61,8 @@
       renderWeatherData (data)
     });
   }
-  
+
+  // Display current weather data on page
   function renderWeatherData(weatherData){
     weatherCity.innerText = weatherData.name
     conditions.innerText = weatherData.weather[0].description
@@ -114,7 +115,7 @@
       var temp = forecastEL.children[2];
       var humidity = forecastEL.children[3];
       var wind = forecastEL.children[4];
-       console.log(forecastEL, icon, description, temp, humidity, wind)
+      
       description.innerText = weatherData[i].weather[0].description;
       icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
        temp.innerText = weatherData[i].main.temp;
