@@ -110,12 +110,12 @@
   
     for (var i = 0; i < weatherData.length; i++){
       var forecastEL = document.getElementById("forecast-" + [i])
-      var icon = forecastEL.children[0];
-      var description = forecastEL.children[1];
+      var icon = forecastEL.children[0]
+      var description = forecastEL.children[1]
       var temp = forecastEL.children[2];
       var humidity = forecastEL.children[3];
       var wind = forecastEL.children[4];
-      
+
       description.innerText = weatherData[i].weather[0].description;
       icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
        temp.innerText = weatherData[i].main.temp;
