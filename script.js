@@ -3,9 +3,9 @@
   var searchBar = document.querySelector(".search-bar");
   var searchButton = document.getElementById("search-btn");
   var citySearched = document.getElementById("citySearched");
-  var currentHour = dayjs().format("hh");
+  var currentHour = "11" //dayjs().format("hh");
   console.log(currentHour)
-
+  
   // DOM Variables
   var weatherCity = document.querySelector(".weatherCity")
   var icon = document.querySelector(".current-icon")
@@ -13,15 +13,36 @@
   var temp = document.querySelector(".current-temp")
   var humidity = document.querySelector(".current-humidity")
   var wind = document.querySelector(".current-wind")
- 
-// generate a button for previously searched cities
+  
+  // generate a button for previously searched cities
   function generateCityButton(city) {
     var button = document.createElement("button");
     button.innerText = city;
     citySearched.appendChild(button);
   }
-
-// TODO Local Storage & search history
+  
+  // TODO Local Storage & search history
+  
+  var knownHours = [0, 3, 6, 9, 12, 15, 18, 21];
+// Get Next Hour Available
+  function getNextAvailableHour(hour) {
+    console.log("Working on hour" + hour);
+    var hourNum = parseInt(hour);
+    if (knownHours.includes(hourNum)) {
+      return hour;
+    } else {
+      var nextHour;
+      for (var i = 0; i < knownHours.length; i++) {
+        var knownHourNum = parseInt(knownHours[i]);
+        //   console.log(knownHourNum, hourNum, knownHourNum - hourNum);
+        if (Math.abs(knownHourNum - hourNum) === 1) {
+          nextHour = knownHours[i];
+          break;
+        }
+      }
+      return nextHour;
+    }
+  }
 
 // current weather function (pure-ish function)
   function getCurrentWeather (city){
@@ -71,35 +92,36 @@
       })
       .then(function (data) {
         // TODO: update forecast weather DOM
-        console.log(data);
         var forecastResults = [];
   
         for (var i  =0; i < data.list.length; i++){
           var weatherData = data.list[i]
           var weatherHour = weatherData.dt_txt.split(" ")[1].split(":")[0];
-          if (currentHour == weatherHour){
+          var nextHour = getNextAvailableHour(currentHour)
+          console.log(currentHour, weatherHour)
+          if (nextHour == weatherHour){
              forecastResults.push(weatherData)
           } 
         } 
-        generateForecastCard(forecastResults)
+        generateForecastCards(forecastResults)
       });
   }
-  function generateForecastCard(weatherData){
-    for (var i = 0; i < weatherData.length; i++)
-    { var forecastEL = document.getElementById("forecast-" + [i])
+  function generateForecastCards(weatherData){
+    console.log(weatherData)
+    for (var i = 0; i < weatherData.length; i++){
+      var forecastEL = document.getElementById("forecast-" + [i])
       var icon = forecastEL.children[0];
       var description = forecastEL.children[1];
       var temp = forecastEL.children[2];
       var humidity = forecastEL.children[3];
       var wind = forecastEL.children[4];
-
+       console.log(forecastEl, icon, description, temp, humidity, wind)
       description.innerText = weatherData[i].weather[0].description;
       icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
        temp.innerText = weatherData[i].main.temp;
        humidity.innerText = weatherData[i].main.humidity;
        wind.innerText = weatherData[i].wind.speed;
     }
-    console.log(weatherData[0].weather);
   }
 
   searchButton.addEventListener("click", function (event) {
