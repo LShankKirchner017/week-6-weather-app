@@ -108,14 +108,3 @@
     getCurrentWeather(city);
     generateCityButton(city);
   });
-
-
-// create elements in the upcoming weather card
-  // icon
-  // h3 condition
-  // h3 temp
-  // h3 humidity
-  // wind
-
-
-// store user input cities
