@@ -10,10 +10,11 @@
 
   // DOM Variables
   var weatherCity = document.querySelector(".weatherCity")
-  var conditions = document.querySelector(".conditions")
-  var temp = document.querySelector(".temp")
-  var humidity = document.querySelector(".humidity")
-  var wind = document.querySelector(".wind")
+  var icon = document.querySelector(".current-icon")
+  var conditions = document.querySelector(".current-conditions")
+  var temp = document.querySelector(".current-temp")
+  var humidity = document.querySelector(".current-humidity")
+  var wind = document.querySelector(".current-wind")
  
 // generate a button for previously searched cities
   function generateCityButton(city) {
@@ -22,7 +23,7 @@
     citySearched.appendChild(button);
   }
 
-// Local Storage
+// Local Storage & search history
 
 // current weather function (pure-ish function)
   function getCurrentWeather (city){
@@ -37,7 +38,9 @@
 
     })
     .then(function(data){
+
       // TODO: update current weather DOM
+
       get5DayForecast (data.coord)
       renderWeatherData (data)
     });
@@ -46,6 +49,10 @@
   function renderWeatherData(weatherData){
     weatherCity.innerText = weatherData.name
     conditions.innerText = weatherData.weather[0].description
+    icon.setAttribute(
+      "src",
+      "https://openweathermap.org/img/wn/" + weatherData.weather[0].icon + ".png"
+    );
     temp.innerText = weatherData.main.temp
     humidity.innerText = weatherData.main.humidity
     wind.innerText = weatherData.wind.speed
@@ -69,17 +76,35 @@
       .then(function (data) {
         // TODO: update forecast weather DOM
         console.log(data);
+        var forecastResults = [];
+  
         for (var i  =0; i < data.list.length; i++){
           var weatherData = data.list[i]
           var weatherHour = weatherData.dt_txt.split(" ")[1].split(":")[0];
           if (currentHour == weatherHour){
-            generateForecastCard (weatherData)
-          }
-        }
+             forecastResults.push(weatherData)
+          } 
+        } 
+        generateForecastCard(forecastResults)
       });
   }
   function generateForecastCard(weatherData){
-    console.log(weatherData)
+    for (var i = 0; i < weatherData.length; i++)
+    { var forecastEL = document.getElementById("forecast-" + [i])
+      var icon = forecastEL.children[0];
+      var description = forecastEL.children[1];
+      var temp = forecastEL.children[2];
+      var humidity = forecastEL.children[3];
+      var wind = forecastEL.children[4];
+
+      description.innerText = weatherData[i].weather[0].description;
+      icon.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherData[i].weather[0].icon + ".png");
+       temp.innerText = weatherData[i].main.temp;
+       humidity.innerText = weatherData[i].main.humidity;
+       wind.innerText = weatherData[i].wind.speed;
+      
+    }
+    console.log(weatherData[0].weather)
   }
 
   searchButton.addEventListener("click", function (event) {
