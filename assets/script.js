@@ -112,13 +112,7 @@
     }
   }
   
-  // generate a list of previously searched cities
   
-  function generateCityList(city) {
-    var para = document.createElement("p");
-    para.innerText = city;
-    searchHistory.appendChild(para);
-  }
 
 // Local Storage   
   // when the user puts a value in the input and clicks the search-btn
@@ -130,5 +124,4 @@
     var city = searchBar.value.trim();
    
     getCurrentWeather(city);
-    generateCityList(city);
   });
