@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/style.css" />
 </head>
+
 <body>
     <header>
         <section class="header-card">
@@ -30,18 +32,19 @@
     <br>
     <!-- where the user can see the current weather info for the city they searched -->
     <section class="current-weather-info">
-        <div class="container-current" >
+        <div class="container-current">
             <div class="row">
                 <div class="column">
-                        <h2>Weather in <span class="weatherCity"></span></h2>
-                        <img src="https://openweathermap.org/img/wn/02d.png" alt="weather-icon" class="current-icon">
-                        <h3>Current Conditions: <span class="current-conditions"></span></h3>
-                        <h3>Temperature: <span class="current-temp"></span> °F</h3>
-                        <h3>Humidity: <span class="current-humidity"></span> %</h3>
-                        <h3>Wind speed: <span class="current-wind"></span> MPH</h3>
-                    </div>
+                    <h2 class="date"></h2>
+                    <h2>Current Weather in <span class="weatherCity"></span></h2>
+                    <img src="https://openweathermap.org/img/wn/02d.png" alt="weather-icon" class="current-icon">
+                    <h3>Current Conditions: <span class="current-conditions"></span></h3>
+                    <h3>Temperature: <span class="current-temp"></span> °F</h3>
+                    <h3>Humidity: <span class="current-humidity"></span> %</h3>
+                    <h3>Wind speed: <span class="current-wind"></span> MPH</h3>
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!-- where the user can see the upcoming 5 days of weather for the city they searched -->
@@ -49,62 +52,68 @@
     <section class="forecast-header">
         <h2> 🌤️ Five Day Forecast 🌧️ </h2>
     </section>
-        <div class="container-forecast">
-            <div class="row">
-                <div class="column">
-                    <div id="forecast-0">
-                        <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
-                        <h3 class="description">Forecast: </h3>
-                        <h3 class="temp">Temperature: °F</h3>
-                        <h3 class="humidity">Humidity: %</h3>
-                        <h3 class="wind">Wind speed: MPH</h3>
-                    </div>
-                </div>
-                <div class="column">
-                    <div id="forecast-1">
-                        <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
-                        <h3 class="description">Forecast: </h3>
-                        <h3 class="temp">Temperature: °F</h3>
-                        <h3 class="humidity">Humidity: %</h3>
-                        <h3 class="wind">Wind speed: MPH</h3>
-                    </div>
-                </div>
-                <div class="column">
-                    <div id="forecast-2">
-                        <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
-                        <h3 class="description">Forecast: </h3>
-                        <h3 class="temp">Temperature: °F</h3>
-                        <h3 class="humidity">Humidity: %</h3>
-                        <h3 class="wind">Wind speed: MPH</h3>
-                    </div>
+    <div class="container-forecast">
+        <div class="row">
+            <div class="column">
+                <p class="date"></p>
+                <div id="forecast-0">
+                    <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
+                    <h3 class="description">Forecast: </h3>
+                    <h3 class="temp">Temperature: °F</h3>
+                    <h3 class="humidity">Humidity: %</h3>
+                    <h3 class="wind">Wind speed: MPH</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="column">
-                        <div id="forecast-3">
-                            <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
-                            <h3 class="description">Forecast: </h3>
-                            <h3 class="temp">Temperature: °F</h3>
-                            <h3 class="humidity">Humidity: %</h3>
-                            <h3 class="wind">Wind speed: MPH</h3>
-                        </div>
-                </div>
-                <div class="column">
-                    <div id="forecast-4">
-                        <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
-                        <h3 class="description"> Forecast: </h3>
-                        <h3 class="temp">Temperature: °F</h3>
-                        <h3 class="humidity">Humidity: %</h3>
-                        <h3 class="wind">Wind speed: MPH</h3>
-                    </div>
+            <div class="column">
+                <p class="date"></p>
+                <div id="forecast-1">
+                    <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
+                    <h3 class="description">Forecast: </h3>
+                    <h3 class="temp">Temperature: °F</h3>
+                    <h3 class="humidity">Humidity: %</h3>
+                    <h3 class="wind">Wind speed: MPH</h3>
                 </div>
             </div>
-           
+            <div class="column">
+                <p class="date"></p>
+                <div id="forecast-2">
+                    <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
+                    <h3 class="description">Forecast: </h3>
+                    <h3 class="temp">Temperature: °F</h3>
+                    <h3 class="humidity">Humidity: %</h3>
+                    <h3 class="wind">Wind speed: MPH</h3>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="column">
+                <p class="date"></p>
+                <div id="forecast-3">
+                    <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
+                    <h3 class="description">Forecast: </h3>
+                    <h3 class="temp">Temperature: °F</h3>
+                    <h3 class="humidity">Humidity: %</h3>
+                    <h3 class="wind">Wind speed: MPH</h3>
+                </div>
+            </div>
+            <div class="column">
+                <p class="date"></p>
+                <div id="forecast-4">
+                    <img src="https://openweathermap.org/img/wn/02d.png" alt="future-weather-icon" class="icon">
+                    <h3 class="description"> Forecast: </h3>
+                    <h3 class="temp">Temperature: °F</h3>
+                    <h3 class="humidity">Humidity: %</h3>
+                    <h3 class="wind">Wind speed: MPH</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
     </section>
-<!-- Day JS -->
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-<!-- Custom Script -->
-<script src="assets/script.js"></script>
+    <!-- Day JS -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <!-- Custom Script -->
+    <script src="assets/script.js"></script>
 </body>
+
 </html>
